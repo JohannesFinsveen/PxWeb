@@ -32,7 +32,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: ASP-app
-          path: 'D:\a\PxWeb\PxWeb\PXWeb\bin\**'
+          path: './PxWeb/'
 
   deploy:
     runs-on: windows-latest
