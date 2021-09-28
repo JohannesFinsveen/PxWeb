@@ -5,7 +5,7 @@ name: Build and deploy ASP app to Azure Web App - PxPortal
 
 env: 
     slnfile: PCAxis.PX-Web.sln
-    outputdir: myOut
+    outputdir: ${{GITHUB_WORKSPACE}}/toDeploy
 
 on:
   push:
