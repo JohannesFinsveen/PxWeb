@@ -33,14 +33,14 @@ jobs:
         run: nuget restore ${{env.slnfile}}
 
       - name: Publish to folder
-        run: msbuild /nologo /verbosity:m /p:Configuration=Release
+        run: msbuild /nologo /verbosity:m /p:Configuration=Release ${{env.slnfile}}
         #/verbosity:d
 
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v2
-        with:
-          name: ASP-app
-          path: '.'
+ #     - name: Upload artifact for deployment job
+ #       uses: actions/upload-artifact@v2
+ #       with:
+ #         name: ASP-app
+ #         path: '.'
 
   #deploy:
   #  runs-on: windows-latest
