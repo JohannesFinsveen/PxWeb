@@ -32,7 +32,7 @@ jobs:
         run: nuget restore ${{env.slnfile}}
 
       - name: Publish to folder
-        run: msbuild /nologo /verbosity:m /p:DeployOnBuild=true /p:Configuration=Release /p:_PackageTempDir="\toDeploy\" ${{env.slnfile}}
+        run: msbuild PCAxis.PX-Web.sln /nologo /verbosity:m /p:DeployOnBuild=true /p:Configuration=Release /p:_PackageTempDir="\published\"
         #/verbosity:d
 
       - name: Upload artifact for deployment job
