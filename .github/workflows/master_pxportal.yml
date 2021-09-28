@@ -33,7 +33,7 @@ jobs:
         run: nuget restore ${{env.slnfile}}
 
       - name: Publish to folder
-        run: msbuild  ${{env.slnfile}} /nologo /verbosity:m /p:Configuration=Release /t:Publish /p:outdir=${{env.GITHUB_WORKSPACE}}/toDeploy
+        run: msbuild  ${{env.slnfile}} /nologo /verbosity:m /p:Configuration=Release /t:Publish /p:outdir=$Env:GITHUB_WORKSPACE}}/toDeploy
         #/verbosity:d
 
       - name: Upload artifact for deployment job
