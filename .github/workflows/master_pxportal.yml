@@ -3,6 +3,10 @@
 
 name: Build and deploy ASP app to Azure Web App - PxPortal
 
+env: 
+    slnfile: PCAxis.PX-Web.sln
+    outputdir: myOut
+
 on:
   push:
     branches:
@@ -12,9 +16,7 @@ on:
 
 jobs:
 
-  env: 
-    slnfile: PCAxis.PX-Web.sln
-    outputdir: myOut
+
 
   build:
     runs-on: windows-latest
