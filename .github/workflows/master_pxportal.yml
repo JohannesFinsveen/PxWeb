@@ -33,7 +33,7 @@ jobs:
         run: nuget restore ${{env.slnfile}}
 
       - name: Publish to folder
-        run: msbuild /nologo /verbosity:m /p:Configuration=Release /p:DeployOnBuild=true ${{env.slnfile}}
+        run: msbuild /nologo /verbosity:m /p:Configuration=Release /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:PublishUrl="NaaDaa" ${{env.slnfile}}
         #/verbosity:d
 
       - name: Upload artifact for deployment job
