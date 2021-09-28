@@ -5,7 +5,6 @@ name: Build and deploy ASP app to Azure Web App - PxPortal
 
 env: 
     slnfile: PCAxis.PX-Web.sln
-    outputdir: './toDeploy'
 
 on:
   push:
@@ -19,7 +18,6 @@ jobs:
   build:
     runs-on: windows-latest
   
-
     steps:
       - uses: actions/checkout@v2
 
@@ -30,36 +28,36 @@ jobs:
         uses: NuGet/setup-nuget@v1.0.5
 
       - name: Restore NuGet packages
-        run: nuget restore ${{env.slnfile}}
+        run: nuget restore PCAxis.PX-Web.sln
 
       - name: Publish to folder
-        run: msbuild /nologo /verbosity:m /p:Configuration=Release /p:OutDir=heihei ${{env.slnfile}}
+        run: msbuild PCAxis.PX-Web.sln /nologo /verbosity:m /p:DeployOnBuild=true /p:Configuration=Debug /p:_PackageTempDir="\published\"
         #/verbosity:d
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: ASP-app
-          path: '.'
+          path: '/published/**'
 
-  #deploy:
-  #  runs-on: windows-latest
-  #  needs: build
-  #  environment:
-  #    name: 'Production'
-  #    url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+  deploy:
+    runs-on: windows-latest
+    needs: build
+    environment:
+      name: 'Production'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
-  #  steps:
-  #    - name: Download artifact from build job
-  #      uses: actions/download-artifact@v2
-  #      with:
-  #        name: ASP-app
+    steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v2
+        with:
+          name: ASP-app
 
-  #    - name: Deploy to Azure Web App
-  #      id: deploy-to-webapp
-  #      uses: azure/webapps-deploy@v2
-  #      with:
-  #        app-name: 'PxPortal'
-  #        slot-name: 'Production'
-  #        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_23A0F761776845CCB79FF53F9F94ADD2 }}
-  #        package: .
+      - name: Deploy to Azure Web App
+        id: deploy-to-webapp
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'PxPortal'
+          slot-name: 'Production'
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_23A0F761776845CCB79FF53F9F94ADD2 }}
+          package: .
