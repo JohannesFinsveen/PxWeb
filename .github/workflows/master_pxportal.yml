@@ -10,11 +10,12 @@ on:
       - hakk4ssbv1
   workflow_dispatch:
 
-env: 
+jobs:
+
+  env: 
     slnfile: PCAxis.PX-Web.sln
     outputdir: myOut
 
-jobs:
   build:
     runs-on: windows-latest
   
@@ -29,10 +30,10 @@ jobs:
         uses: NuGet/setup-nuget@v1.0.5
 
       - name: Restore NuGet packages
-        run: nuget restore ${{slnfile}}
+        run: nuget restore ${{env.slnfile}}
 
       - name: Publish to folder
-        run: msbuild /nologo /verbosity:d /p:Configuration=Release /t:Publish
+        run: msbuild  ${{env.slnfile}} /nologo /verbosity:d /p:Configuration=Release /t:Publish
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
