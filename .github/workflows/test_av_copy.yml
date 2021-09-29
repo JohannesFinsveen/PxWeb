@@ -44,7 +44,7 @@ jobs:
         run: ls  to_deploy
         
       - name: find
-        run: sed -i 's/Databases/Moredata/g' TemplateConfigFiles/databases.config
+        run: sed -i 's/PxWeb 2021 v1/PxWeb from ${{github.ref}}/g' to_deploy/Resources/Languages/pxlang.xml
 
       - name: Cat files
         run: cat  TemplateConfigFiles/databases.config
