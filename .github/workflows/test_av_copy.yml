@@ -1,0 +1,38 @@
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
+name: Deploy to Azure px2v48
+
+env: 
+    slnfile: PCAxis.PX-Web.sln
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+
+  build:
+    runs-on: windows-latest
+  
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup MSBuild path
+        uses: microsoft/setup-msbuild@v1.0.2
+
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v1.0.5
+
+      #- name: Restore NuGet packages
+      #  run: nuget restore PCAxis.PX-Web.sln
+
+      #- name: Publish to folder
+      #  run: msbuild PCAxis.PX-Web.sln /nologo /verbosity:m /p:DeployOnBuild=true /p:Configuration=Debug /p:_PackageTempDir="\published\"
+        #/verbosity:d
+
+      -name: Copy files
+      run: cp README.md MEREAD.md
+      
