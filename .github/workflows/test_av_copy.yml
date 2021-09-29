@@ -36,13 +36,18 @@ jobs:
         run: ls
 
       - name: Copy files
-        run: cp TemplateConfigFiles/databases.config MEREAD.md
+        run: |
+          cp TheAzureConfigFiles/databases.config to_deploy/.
+          cp TheAzureConfigFiles/Web.config to_deploy/.
+        
+      - name: ls2
+        run: ls  to_deploy
         
       - name: find
-        run: sed -i 's/Databases/Moredata/g' MEREAD.md
+        run: sed -i 's/Databases/Moredata/g' TemplateConfigFiles/databases.config
 
       - name: Cat files
-        run: cat MEREAD.md
+        run: cat  TemplateConfigFiles/databases.config
         
       - name: echo
         run: |
