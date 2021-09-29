@@ -35,4 +35,12 @@ jobs:
 
       - name: Copy files
         run: cp TemplateConfigFiles/databases.config MEREAD.md
+
+      - name: Copy files
+        run: cat MEREAD.md
+        
+      - name: Copy files
+        run: grep -v 'hei' MEREAD.md  
+        
+        
       
