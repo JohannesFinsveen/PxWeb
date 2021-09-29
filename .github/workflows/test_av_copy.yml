@@ -41,7 +41,7 @@ jobs:
         run: ls  to_deploy
         
       - name: Change title
-        run: sed -i 's/PxWeb 2021 v1/PxWeb from pull request/g' to_deploy/Resources/Languages/pxlang.xml
+        run: sed -i 's/PxWeb 2021 v1/PxWeb from pullrequest/g' to_deploy/Resources/Languages/pxlang.xml
 
       - name: Cat files
         run: cat to_deploy/Resources/Languages/pxlang.xml
