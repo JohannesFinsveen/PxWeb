@@ -37,7 +37,7 @@ jobs:
         run: cp TemplateConfigFiles/databases.config MEREAD.md
         
       - name: find
-        run: find *.md -type f -exec sed -i ''s/databases/moredata/g'' {} \;
+        run: sed -i ''s/databases/moredata/g'' MEREAD.md
 
       - name: Copy files
         run: cat MEREAD.md
