@@ -43,7 +43,7 @@ jobs:
         run: cat MEREAD.md
         
       - name: echo
-        run: echo "GITHUB_REF $GITHUB_REF og GITHUB_WORKSPACE $GITHUB_WORKSPACE"
+        run: echo "GITHUB_REF ${{GITHUB_REF}} og GITHUB_WORKSPACE ${{env.GITHUB_WORKSPACE}}"
         
         
       
