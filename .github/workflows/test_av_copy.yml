@@ -33,6 +33,6 @@ jobs:
       #  run: msbuild PCAxis.PX-Web.sln /nologo /verbosity:m /p:DeployOnBuild=true /p:Configuration=Debug /p:_PackageTempDir="\published\"
         #/verbosity:d
 
-      -name: Copy files
-      run: cp README.md MEREAD.md
+      - name: Copy files
+        run: cp README.md MEREAD.md
       
