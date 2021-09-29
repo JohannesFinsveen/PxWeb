@@ -44,7 +44,7 @@ jobs:
         
       - name: echo
         run: |
-          echo "GITHUB_REF ${{github.ref}} og GITHUB_WORKSPACE ${{GITHUB_WORKSPACE}}"
+          echo "GITHUB_REF = ${{github.ref}}"
           echo "github.workspace = ${{ github.workspace }}"
           
         
