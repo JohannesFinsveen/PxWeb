@@ -34,5 +34,5 @@ jobs:
         #/verbosity:d
 
       - name: Copy files
-        run: cp READMEX.md MEREAD.md
+        run: cp TemplateConfigFiles/databases.config MEREAD.md
       
