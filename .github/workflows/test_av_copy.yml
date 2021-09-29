@@ -34,5 +34,5 @@ jobs:
         #/verbosity:d
 
       - name: Copy files
-        run: cp README.md MEREAD.md
+        run: cp READMEX.md MEREAD.md
       
