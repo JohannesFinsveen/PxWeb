@@ -65,6 +65,6 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'px2v48'
-          slot-name: 'Dev2'
+          slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_CF43236341DF4B4E9CA8E0E3871310A2 }}
           package: .
