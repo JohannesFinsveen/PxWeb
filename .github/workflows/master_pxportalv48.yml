@@ -39,7 +39,7 @@ jobs:
           cp TheAzureConfigFiles/setting.config to_deploy/.
              
       - name: Change title
-        run: sed -i 's/PxWeb 2021 v1/PxWeb 2021 from pullrequest/g' to_deploy/Resources/Languages/pxlang.xml
+        run: sed -i 's/PxWeb 2021 v1/PxWeb 2021 from pullrequest Dev2/g' to_deploy/Resources/Languages/pxlang.xml
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
@@ -65,6 +65,6 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'px2v48'
-          slot-name: 'Production'
+          slot-name: 'Dev2'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_CF43236341DF4B4E9CA8E0E3871310A2 }}
           package: .
