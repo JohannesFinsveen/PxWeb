@@ -1,0 +1,40 @@
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
+name: Test replace
+
+env: 
+    slnfile: PCAxis.PX-Web.sln
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+
+  build:
+    runs-on: windows-latest
+  
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup MSBuild path
+        uses: microsoft/setup-msbuild@v1.0.2
+
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v1.0.5
+
+        
+      - name: echo
+        run: |
+          echo "GITHUB_REF = ${{github.ref}}"
+          echo "github.workspace = ${{ github.workspace }}"
+          echo "github.RUN_ID = ${{ github.RUN_ID }}"
+          echo "github.ACTOR = ${{ github.ACTOR }}"
+          echo "github.SHA = ${{ github.SHA }}"
+          echo "github.SHA = $env:GITHUB_SHA"
+        
+        
+      
