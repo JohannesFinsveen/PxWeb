@@ -29,6 +29,7 @@ jobs:
         
       - name: echo
         run: |
+          echo "hei"
           echo "GITHUB_REF = ${{github.ref}}"
           echo "github.workspace = ${{ github.workspace }}"
           echo "github.RUN_ID = ${{ github.RUN_ID }}"
